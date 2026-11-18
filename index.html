@@ -92,7 +92,7 @@ function anonymousAuth(){
 async function registerArrival(id){
  try{
   const token=await anonymousAuth();
-  const response=await fetch(firebaseDatabase+'/arrivees/'+encodeURIComponent(id)+'.json?auth='+encodeURIComponent(token),{method:'PUT',headers:{'Content-Type':'application/json','If-Match':'null_etag'},body:JSON.stringify({invite:id,instant:{'.sv':'timestamp'}})});
+  const response=await fetch(firebaseDatabase+'/arrivees/'+encodeURIComponent(id)+'.json?auth='+encodeURIComponent(token),{method:'PUT',headers:{'Content-Type':'application/json','If-Match':'null_etag'},body:JSON.stringify({timestamp:Date.now()})});
   // En cas de doublon ou d'absence de réseau, on n'interrompt pas les surprises.
   if(!response.ok && response.status!==412)console.warn('Arrivée non enregistrée :',response.status);
  }catch(e){console.warn('Mode TV :',e.message)}
