@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0b1024"><title>La Nuit des Étoiles · Édition privée</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#fff;background:#090e20}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 15%,#28336b 0,transparent 45%),radial-gradient(ellipse at 85% 80%,#351a55 0,transparent 40%),#090e20;overflow-x:hidden}.stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 15px 25px,#fff 99%,transparent),radial-gradient(2px 2px at 90px 110px,#fff 99%,transparent),radial-gradient(1px 1px at 165px 70px,#e8c975 99%,transparent);background-size:190px 170px;animation:drift 45s linear infinite}@keyframes drift{to{background-position:190px 170px}}.wrap{position:relative;max-width:580px;margin:auto;padding:30px 18px 50px}.brand{text-align:center}.kicker{font-size:11px;letter-spacing:.25em;color:#dfc57d;text-transform:uppercase}.brand h1{font-family:Georgia,serif;font-size:clamp(32px,8vw,49px);line-height:1.05;letter-spacing:.02em;color:#f5d98a;margin:13px 0 10px;text-shadow:0 0 25px #e2b85644}.subtitle{font-size:12px;letter-spacing:.2em;color:#c6cce4}.ticket{margin-top:30px;padding:26px 23px;background:linear-gradient(160deg,#1c2545eb,#11182eea);border:1px solid #d5b96a77;border-radius:22px;box-shadow:0 25px 65px #0007,0 0 35px #d9ba3520;text-align:center;animation:pop .5s ease-out}@keyframes pop{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}.photo{height:220px;width:175px;border:2px solid #e8c979;border-radius:15px;overflow:hidden;display:grid;place-items:center;margin:8px auto 17px;background:linear-gradient(145deg,#2c3455,#141b32);box-shadow:0 0 30px #eac46b20}.photo img{width:100%;height:100%;object-fit:cover}.placeholder{font-size:64px;color:#8c96b9}.tag{display:inline-block;background:#174e42;color:#aef1c6;border:1px solid #4da582;padding:7px 15px;border-radius:30px;font-size:11px;letter-spacing:.1em;font-weight:800}.name{font-size:clamp(25px,7vw,38px);margin:18px 0 8px;line-height:1.1}.nickname{color:#edce78;font-style:italic;font-size:16px}.desc{line-height:1.6;color:#e2e5f4;margin:17px auto;max-width:390px}.number{color:#e7cb7d;font-weight:700;letter-spacing:.08em;font-size:13px}.notice{background:#ffffff0c;border:1px solid #ffffff20;padding:14px 16px;border-radius:12px;font-size:14px;line-height:1.5;margin:20px 0}.small{color:#b3bbd8;font-size:13px}.buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}button,.button{border:1px solid #e4c778;background:#edcc78;color:#1c2134;padding:12px 17px;border-radius:11px;font-size:14px;font-weight:800;cursor:pointer;text-decoration:none}button.secondary{background:transparent;color:#f1d98c}.footer{text-align:center;color:#8994b7;font-size:11px;margin-top:25px;line-height:1.7}.selector{background:#111a34;border:1px solid #ffffff30;color:white;border-radius:10px;padding:12px;font-size:15px;width:100%;margin-top:14px}.missionIcon{font-size:52px;margin:10px}.hide{display:none}.spark{animation:glow 2s ease-in-out infinite alternate}@keyframes glow{to{text-shadow:0 0 30px #ffda80}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style></head><body><div class="stars"></div><main class="wrap"><header class="brand"><div class="kicker">✦ LE FESTIVAL EST ANNULÉ. PAS LA FÊTE. ✦</div><h1>LA NUIT<br>DES ÉTOILES</h1><div class="subtitle">ÉDITION PRIVÉE · 31.12.2026</div></header><section id="picker" class="ticket hide"><h2>Bienvenue au festival ✨</h2><p class="desc">Sélectionne un profil pour tester l'accréditation. Les bracelets NFC ouvriront directement le bon profil.</p><select id="guests" class="selector"></select><div class="buttons"><button id="openGuest">Voir l'accréditation</button></div></section><section id="card" class="ticket hide" aria-live="polite"><div id="photo" class="photo"><span class="placeholder">★</span></div><div id="status" class="tag">ACCÈS VIP VALIDÉ</div><h2 id="name" class="name spark">BIENVENUE !</h2><div id="nickname" class="nickname"></div><p id="description" class="desc"></p><div id="number" class="number"></div><div id="notice" class="notice"></div><div id="hint" class="small"></div><div class="buttons"><button id="next" class="secondary">✨ Découvrir la prochaine surprise</button><button id="reset" class="secondary">↺ Recommencer</button></div></section><footer class="footer">LA NUIT DES ÉTOILES · FESTIVAL PRIVÉ<br>Une création pour les copains, les étoiles et les soirées improbables.</footer></main>
+<script>
+/* PERSONNALISATION : remplacer les prénoms, surnoms et fichiers photo ci-dessous.
+   Les images peuvent être placées dans un dossier 'photos' à côté de ce fichier.
+   Exemple : photo: 'photos/mathieu.jpg' . Avec accord des personnes photographiées. */
+const people=[
+{id:'01',name:'Mathieu',nick:'Le Roi de la Mauvaise Soirée',photo:''},
+{id:'02',name:'Invité 02',nick:'La Comète Incontrôlable',photo:''},
+{id:'03',name:'Invité 03',nick:'L’Astronaute du Dancefloor',photo:''},
+{id:'04',name:'Invité 04',nick:'La Star Intergalactique',photo:''},
+{id:'05',name:'Invité 05',nick:'Le DJ de l’Apéro',photo:''},
+{id:'06',name:'Invité 06',nick:'L’Étoile Filante',photo:''},
+{id:'07',name:'Invité 07',nick:'La Légende Cosmique',photo:''},
+{id:'08',name:'Invité 08',nick:'Le Satellite Festif',photo:''},
+{id:'09',name:'Invité 09',nick:'La Supernova',photo:''},
+{id:'10',name:'Invité 10',nick:'Le Capitaine Minuit',photo:''},
+{id:'11',name:'Invité 11',nick:'La Planète Ambiance',photo:''},
+{id:'12',name:'Invité 12',nick:'Le VIP Égaré',photo:''}
+];
+const surprises=[
+{icon:'🌟',status:'ACCÈS VIP VALIDÉ',title:p=>`BIENVENUE ${p.name.toUpperCase()} !`,description:'Tu es officiellement accrédité pour le festival le plus improbable de l’année !',notice:'⚠️ Attention : ton niveau de sérieux est incompatible avec cet événement.',hint:'Prochaine surprise au prochain scan…'},
+{icon:'🕵️',status:'MISSION SECRÈTE N° 1',title:()=> 'MISSION TOP SECRÈTE',description:'Fais prononcer le mot « ornithorynque » à un autre festivalier sans lui dire pourquoi.',notice:'🤫 Interdiction de révéler ta mission avant de l’avoir accomplie.',hint:'Une autre surprise t’attend au prochain scan…'},
+{icon:'🎵',status:'PRIVILÈGE VIP DÉBLOQUÉ',title:()=> 'TU PRENDS LE CONTRÔLE !',description:'Tu as le droit de proposer la prochaine chanson au DJ de la soirée.',notice:'🎶 Choisis bien : ta réputation musicale est en jeu.',hint:'Prochaine surprise au prochain scan…'},
+{icon:'📸',status:'DÉFI PHOTO',title:()=> 'PHOTO IMPROBABLE',description:'Prends une photo avec deux festivaliers dont les costumes n’ont absolument rien à voir.',notice:'✨ Bonus si personne ne comprend le thème de la photo.',hint:'Prochaine surprise au prochain scan…'},
+{icon:'🥂',status:'BONUS FESTIVAL',title:()=> 'DISCOURS EXPRESS',description:'Tu disposes de 20 secondes pour faire un discours solennel sur un sujet complètement ridicule.',notice:'🏆 Applaudissements imaginaires garantis.',hint:'Tu as terminé les surprises de démonstration !'}
+];
+const picker=document.getElementById('picker'),card=document.getElementById('card');
+const select=document.getElementById('guests');
+people.forEach(p=>{const o=document.createElement('option');o.value=p.id;o.textContent=p.name+' · n° '+p.id;select.append(o)});
+let person=null,index=0;
+function readProgress(key){try{return Number(localStorage.getItem(key)||'0')}catch(e){return 0}}
+function saveProgress(key,value){try{localStorage.setItem(key,String(value))}catch(e){}}
+function show(i){
+ const s=surprises[Math.min(i,surprises.length-1)];
+ document.getElementById('status').textContent=s.status;
+ document.getElementById('name').textContent=s.title(person);
+ document.getElementById('nickname').textContent='✦ '+person.nick+' ✦';
+ document.getElementById('description').textContent=s.description;
+ document.getElementById('number').textContent='FESTIVALIER N° '+person.id.padStart(3,'0');
+ document.getElementById('notice').textContent=s.notice;
+ document.getElementById('hint').textContent=s.hint;
+ const ph=document.getElementById('photo');ph.replaceChildren();
+ if(person.photo){const img=document.createElement('img');img.src=person.photo;img.alt='Photo de '+person.name;img.onerror=()=>{ph.textContent='★'};ph.append(img)}
+ else{const span=document.createElement('span');span.className='placeholder';span.textContent=s.icon;ph.append(span)}
+ document.getElementById('next').textContent=i>=surprises.length-1?'✓ Toutes les surprises découvertes':'✨ Découvrir la prochaine surprise';
+ document.getElementById('next').disabled=i>=surprises.length-1;
+}
+function openProfile(id){
+ person=people.find(p=>p.id===id)||people[0];
+ picker.classList.add('hide');card.classList.remove('hide');
+ const key='etoiles-surprise-'+person.id;
+ index=Math.max(0,Math.min(surprises.length-1,readProgress(key)));
+ show(index);saveProgress(key,Math.min(index+1,surprises.length-1));
+ // Do not navigate to a relative URL: Android content:// file viewers cannot resolve it.
+ // Once hosted over HTTPS, the URL is updated for shareable guest links.
+ if(location.protocol==='https:'||location.protocol==='http:'){
+  const url=new URL(location.href);url.searchParams.set('invite',person.id);
+  history.replaceState(null,'',url);
+ }
+}
+document.getElementById('openGuest').onclick=()=>openProfile(select.value);
+document.getElementById('next').onclick=()=>{
+ if(!person)return;
+ index=Math.min(index+1,surprises.length-1);show(index);
+ saveProgress('etoiles-surprise-'+person.id,Math.min(index+1,surprises.length-1));
+};
+document.getElementById('reset').onclick=()=>{
+ if(!person)return;index=0;show(index);saveProgress('etoiles-surprise-'+person.id,1);
+};
+const guestId=new URLSearchParams(location.search).get('invite');
+if(people.some(p=>p.id===guestId))openProfile(guestId);
+else picker.classList.remove('hide');
+</script></body></html>
