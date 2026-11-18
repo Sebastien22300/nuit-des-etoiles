@@ -58,7 +58,7 @@ function openProfile(id){
  index=Math.max(0,Math.min(surprises.length-1,readProgress(key)));
  show(index);saveProgress(key,Math.min(index+1,surprises.length-1));
  // Uniquement au premier affichage de bienvenue, on signale l'arrivée.
- if(index===0)registerArrival(person.id);
+ registerArrival(person.id);
  if(location.protocol==='https:'||location.protocol==='http:'){
   const url=new URL(location.href);url.searchParams.set('invite',person.id);
   history.replaceState(null,'',url);
