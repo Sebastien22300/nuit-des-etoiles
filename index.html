@@ -231,6 +231,7 @@ function updateTV(data){
  if(!tvFirstLoad&&newcomers.length){displayArrival(people.find(p=>p.id===newcomers[newcomers.length-1]));}
  tvFirstLoad=false;
  if(Date.now()>tvUntil){
+    document.getElementById('tv').classList.remove('tv-arrival');
   document.getElementById('tvIcon').textContent='✨';
   document.getElementById('tvStatus').textContent='ÉCRAN GÉANT DU FESTIVAL';
   document.getElementById('tvName').textContent='LA FÊTE CONTINUE !';
