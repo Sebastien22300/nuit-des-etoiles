@@ -33,9 +33,7 @@ body.tv .tv-arrival #tvName {
   animation: vipZoom 1.2s ease-out both !important;
 }
 
-body.tv .tv-arrival #tvNick {
-  font-size: clamp(30px, 4vw, 65px) !important;
-}
+
 
 body.tv .tv-arrival #tvCount,
 body.tv .tv-arrival #tvGuests,
@@ -222,7 +220,6 @@ function displayArrival(p){
     'display:block !important;'+
     'width:100% !important;'+
     'max-width:100% !important;'+
-    'font-size:clamp(65px,10vw,150px) !important;'+
     'line-height:1.15 !important;'+
     'white-space:pre-line !important;'+
     'text-align:center !important;'+
@@ -233,7 +230,6 @@ function displayArrival(p){
   nick.textContent='✦ '+p.nick+' ✦';
   nick.style.cssText=
     'display:block !important;'+
-    'font-size:clamp(32px,5vw,70px) !important;'+
     'text-align:center !important;'+
     'margin:20px auto !important;';
 
