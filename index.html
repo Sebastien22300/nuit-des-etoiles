@@ -2,6 +2,17 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0756bd"><title>La Nuit des Étoiles · Édition privée</title>
 <style>
+   /* Prénom géant lors des arrivées VIP */
+body.tv .tv-arrival #tvName {
+  font-size: clamp(65px, 11vw, 150px) !important;
+  line-height: 1.1;
+  color: #ffe59a;
+  text-shadow: 0 0 25px #ffd700, 0 0 60px #ffcc00;
+}
+
+body.tv .tv-arrival #tvNick {
+  font-size: clamp(28px, 4vw, 52px) !important;
+}
    /* Animation spectaculaire des arrivées VIP */
 body.tv .tv-arrival #tvName {
   animation: vipZoom 1.2s ease-out both;
