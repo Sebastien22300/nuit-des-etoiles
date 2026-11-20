@@ -215,14 +215,16 @@ box.classList.remove('tv-arrival');
 setTimeout(function(){box.classList.add('tv-arrival');},100);
  document.getElementById('tvIcon').textContent='🌟';
  document.getElementById('tvStatus').textContent='NOUVELLE ÉTOILE AU FESTIVAL';
- document.getElementById('tvName').textContent=p.name.toUpperCase()+' EST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
-   document.getElementById('tvName').style.fontSize='100px';
+ document.getElementById('tvName').textContent=p.name.toUpperCase()+'\nEST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
+document.getElementById('tvName').style.whiteSpace='pre-line';
+   document.getElementById('tvName').style.fontSize='75px';
    document.getElementById('tvName').style.width='100%';
 document.getElementById('tvName').style.textAlign='center';
 document.getElementById('tvName').style.boxSizing='border-box';
 document.getElementById('tvName').style.lineHeight='1.1';
 document.getElementById('tvName').style.maxWidth='100%';
  document.getElementById('tvNick').textContent='✦ '+p.nick+' ✦';
+   document.getElementById('tvNick').style.fontSize='32px';
  document.getElementById('tvMessage').textContent='Bienvenue à La Nuit des Étoiles !';
  tvUntil=Date.now()+10000;
 }
@@ -241,6 +243,8 @@ function updateTV(data){
     document.getElementById('tvName').style.fontSize='';
 document.getElementById('tvName').style.lineHeight='';
 document.getElementById('tvName').style.maxWidth='';
+    document.getElementById('tvNick').style.fontSize='';
+document.getElementById('tvName').style.whiteSpace='';
   document.getElementById('tvIcon').textContent='✨';
   document.getElementById('tvStatus').textContent='ÉCRAN GÉANT DU FESTIVAL';
   document.getElementById('tvName').textContent='LA FÊTE CONTINUE !';
