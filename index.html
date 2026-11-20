@@ -151,7 +151,7 @@ function displayArrival(p){
 function updateTV(data){
  const arrivals=data&&typeof data==='object'?data:{};
  const ids=people.filter(p=>arrivals[p.id]&&typeof arrivals[p.id].timestamp==='number').map(p=>p.id);
- const chips=document.getElementById('tvGuests');chips.replaceChildren();
+ const chips=document.getElementById('tvGuests');chips.innerHTML='';
  ids.forEach(id=>{const p=people.find(p=>p.id===id);const span=document.createElement('span');span.className='tv-chip';span.textContent='✦ '+p.name;chips.append(span)});
  document.getElementById('tvCount').textContent=ids.length+' festivalier'+(ids.length>1?'s':'')+' arrivé'+(ids.length>1?'s':'')+' sur '+people.length;
  const newcomers=ids.filter(id=>!tvKnown[id]);
