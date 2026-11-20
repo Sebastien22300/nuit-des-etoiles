@@ -161,7 +161,9 @@ else picker.classList.remove('hide');
 
 let tvKnown={},tvLastEvent=0,tvFirstLoad=true,tvUntil=0;
 function displayArrival(p){
- const box=document.getElementById('tv');box.classList.remove('tv-arrival');void box.offsetWidth;box.classList.add('tv-arrival');
+ const box=document.getElementById('tv');
+box.classList.remove('tv-arrival');
+setTimeout(function(){box.classList.add('tv-arrival');},100);
  document.getElementById('tvIcon').textContent='🌟';
  document.getElementById('tvStatus').textContent='NOUVELLE ÉTOILE AU FESTIVAL';
  document.getElementById('tvName').textContent=p.name.toUpperCase()+' EST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
