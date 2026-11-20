@@ -210,23 +210,43 @@ else picker.classList.remove('hide');
 
 let tvKnown={},tvLastEvent=0,tvFirstLoad=true,tvUntil=0;
 function displayArrival(p){
- const box=document.getElementById('tv');
-box.classList.remove('tv-arrival');
-setTimeout(function(){box.classList.add('tv-arrival');},100);
- document.getElementById('tvIcon').textContent='🌟';
- document.getElementById('tvStatus').textContent='NOUVELLE ÉTOILE AU FESTIVAL';
- document.getElementById('tvName').textContent=p.name.toUpperCase()+'\nEST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
-document.getElementById('tvName').style.whiteSpace='pre-line';
-   document.getElementById('tvName').style.fontSize='75px';
-   document.getElementById('tvName').style.width='100%';
-document.getElementById('tvName').style.textAlign='center';
-document.getElementById('tvName').style.boxSizing='border-box';
-document.getElementById('tvName').style.lineHeight='1.1';
-document.getElementById('tvName').style.maxWidth='100%';
- document.getElementById('tvNick').textContent='✦ '+p.nick+' ✦';
-   document.getElementById('tvNick').style.fontSize='32px';
- document.getElementById('tvMessage').textContent='Bienvenue à La Nuit des Étoiles !';
- tvUntil=Date.now()+10000;
+  const box=document.getElementById('tv');
+  const name=document.getElementById('tvName');
+  const nick=document.getElementById('tvNick');
+
+  box.classList.remove('tv-arrival');
+
+  document.getElementById('tvIcon').textContent='🌟';
+  document.getElementById('tvStatus').textContent='NOUVELLE ÉTOILE AU FESTIVAL';
+
+  name.textContent=p.name.toUpperCase()+'\nEST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
+
+  name.style.cssText=
+    'display:block !important;'+
+    'width:100% !important;'+
+    'max-width:100% !important;'+
+    'font-size:clamp(42px,7vw,90px) !important;'+
+    'line-height:1.15 !important;'+
+    'white-space:pre-line !important;'+
+    'text-align:center !important;'+
+    'position:relative !important;'+
+    'margin:0 auto !important;'+
+    'box-sizing:border-box !important;';
+
+  nick.textContent='✦ '+p.nick+' ✦';
+  nick.style.cssText=
+    'display:block !important;'+
+    'font-size:clamp(24px,3vw,42px) !important;'+
+    'text-align:center !important;'+
+    'margin:20px auto !important;';
+
+  document.getElementById('tvMessage').textContent='Bienvenue à La Nuit des Étoiles !';
+
+  setTimeout(function(){
+    box.classList.add('tv-arrival');
+  },100);
+
+  tvUntil=Date.now()+10000;
 }
 function updateTV(data){
  const arrivals=data&&typeof data==='object'?data:{};
@@ -241,6 +261,8 @@ function updateTV(data){
  if(Date.now()>tvUntil){
     document.getElementById('tv').classList.remove('tv-arrival');
     document.getElementById('tvName').style.fontSize='';
+    document.getElementById('tvName').style.cssText='';
+document.getElementById('tvNick').style.cssText='';
 document.getElementById('tvName').style.lineHeight='';
 document.getElementById('tvName').style.maxWidth='';
     document.getElementById('tvNick').style.fontSize='';
