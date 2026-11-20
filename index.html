@@ -2,6 +2,44 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0756bd"><title>La Nuit des Étoiles · Édition privée</title>
 <style>
+   /* ARRIVÉE VIP PLEIN ÉCRAN */
+body.tv .ticket.tv-arrival {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 100 !important;
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 8vh 4vw !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: rgba(0, 35, 125, 0.82) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+body.tv .tv-arrival #tvName {
+  font-size: clamp(80px, 13vw, 220px) !important;
+  line-height: 1.05 !important;
+  color: #ffe59a !important;
+  text-shadow: 0 0 35px #ffd700 !important;
+  animation: vipZoom 1.2s ease-out both !important;
+}
+
+body.tv .tv-arrival #tvNick {
+  font-size: clamp(30px, 4vw, 65px) !important;
+}
+
+body.tv .tv-arrival #tvCount,
+body.tv .tv-arrival #tvGuests,
+body.tv .tv-arrival #tvConnection,
+body.tv .tv-arrival #tvMessage {
+  display: none !important;
+}
    /* Prénom géant lors des arrivées VIP */
 body.tv .tv-arrival #tvName {
   font-size: clamp(65px, 11vw, 150px) !important;
