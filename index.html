@@ -319,7 +319,7 @@ function updateTV(data){
  ids.forEach(id=>tvKnown[id]=true);
  if(!tvFirstLoad&&newcomers.length){displayArrival(people.find(p=>p.id===newcomers[newcomers.length-1]));}
  tvFirstLoad=false;
- if(Date.now()>tvUntil){
+ if(Date.now()>tvUntil && !newcomers.length){
     document.getElementById('tv').classList.remove('tv-arrival');
     document.getElementById('tvName').style.fontSize='';
     document.getElementById('tvName').style.cssText='';
