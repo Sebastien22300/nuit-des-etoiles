@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0756bd"><title>La Nuit des Étoiles · Édition privée</title>
 <style>
+  /* Textes agrandis sur l'écran d'accueil TV */
+body.tv #tv:not(.tv-arrival) #tvName {
+  font-size: 42px !important;
+}
+
+body.tv #tv:not(.tv-arrival) #tvNick {
+  font-size: 26px !important;
+}
+
+body.tv #tv:not(.tv-arrival) #tvMessage,
+body.tv #tv:not(.tv-arrival) #tvCount,
+body.tv #tv:not(.tv-arrival) #tvGuests {
+  font-size: 20px !important;
+}
   body.tv .brand h1 {
   color: #ffe59a !important;
   text-shadow: 0 0 28px #ffd700 !important;
