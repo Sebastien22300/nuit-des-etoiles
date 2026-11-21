@@ -1,71 +1,62 @@
-```
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0756bd"><title>La Nuit des Étoiles · Édition privée</title>
 <style>
-   /* ARRIVÉE VIP PLEIN ÉCRAN */
-body.tv .ticket.tv-arrival {
+/* Arrivée VIP : panneau réellement centré, sans conflit d'animations */
+body.tv #tv.tv-arrival {
   position: fixed !important;
-   top: 50% !important;
-left: 50% !important;
-transform: translate(-50%, -50%) !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
   z-index: 100 !important;
   width: 100vw !important;
   max-width: none !important;
   height: 100vh !important;
-   box-sizing: border-box !important;
+  height: 100dvh !important;
   margin: 0 !important;
-  padding: 8vh 4vw !important;
-  border: none !important;
+  padding: 3vh 4vw !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
   border-radius: 0 !important;
-  background: rgba(0, 35, 125, 0.82) !important;
+  background: #0756bd !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
   justify-content: center !important;
+  align-items: center !important;
+  gap: 1.2vh !important;
   text-align: center !important;
+  animation: none !important;
 }
-
-body.tv .tv-arrival #tvName {
-  font-size: clamp(80px, 13vw, 220px) !important;
-  line-height: 1.05 !important;
+body.tv #tv.tv-arrival #tvName {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 1vh auto !important;
+  font-size: clamp(42px, 7vw, 105px) !important;
+  line-height: 1.12 !important;
+  white-space: pre-line !important;
+  overflow-wrap: anywhere !important;
+  text-align: center !important;
   color: #ffe59a !important;
-  text-shadow: 0 0 35px #ffd700 !important;
+  text-shadow: 0 0 28px #ffd700 !important;
   animation: vipZoom 1.2s ease-out both !important;
 }
-
-
-
-body.tv .tv-arrival #tvCount,
-body.tv .tv-arrival #tvGuests,
-body.tv .tv-arrival #tvConnection,
-body.tv .tv-arrival #tvMessage {
-  display: none !important;
+body.tv #tv.tv-arrival #tvNick {
+  display: block !important;
+  margin: 1vh auto !important;
+  font-size: clamp(23px, 3.2vw, 46px) !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  animation: vipZoom 1.5s ease-out both !important;
 }
-  
-
-body.tv .tv-arrival #tvNick {
-  font-size: clamp(45px, 6vw, 85px) !important;
-}
-   /* Animation spectaculaire des arrivées VIP */
-body.tv .tv-arrival #tvName {
-  animation: vipZoom 1.2s ease-out both;
-  color: #ffe59a;
-  text-shadow: 0 0 25px #ffd700, 0 0 60px #ffcc00;
-}
-
-body.tv .tv-arrival #tvNick {
-  animation: vipZoom 1.5s ease-out both;
-}
-
+body.tv #tv.tv-arrival #tvIcon {font-size: clamp(32px, 4vw, 58px) !important; margin: 0 !important;}
+body.tv #tv.tv-arrival #tvCount,
+body.tv #tv.tv-arrival #tvGuests,
+body.tv #tv.tv-arrival #tvConnection,
+body.tv #tv.tv-arrival #tvMessage {display:none !important;}
 @keyframes vipZoom {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from {opacity:0;transform:scale(.85)}
+  to {opacity:1;transform:scale(1)}
 }
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#fff;background:#090e20}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 15%,#28336b 0,transparent 45%),radial-gradient(ellipse at 85% 80%,#351a55 0,transparent 40%),#090e20;overflow-x:hidden}.stars{position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 15px 25px,#fff 99%,transparent),radial-gradient(2px 2px at 90px 110px,#fff 99%,transparent),radial-gradient(1px 1px at 165px 70px,#e8c975 99%,transparent);background-size:190px 170px;animation:drift 45s linear infinite}@keyframes drift{to{background-position:190px 170px}}.wrap{position:relative;max-width:580px;margin:auto;padding:30px 18px 50px}.brand{text-align:center}.kicker{font-size:11px;letter-spacing:.25em;color:#dfc57d;text-transform:uppercase}.brand h1{font-family:Georgia,serif;font-size:clamp(32px,8vw,49px);line-height:1.05;letter-spacing:.02em;color:#f5d98a;margin:13px 0 10px;text-shadow:0 0 25px #e2b85644}.subtitle{font-size:12px;letter-spacing:.2em;color:#c6cce4}.ticket{margin-top:30px;padding:26px 23px;background:linear-gradient(160deg,#1c2545eb,#11182eea);border:1px solid #d5b96a77;border-radius:22px;box-shadow:0 25px 65px #0007,0 0 35px #d9ba3520;text-align:center;animation:pop .5s ease-out}@keyframes pop{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}.photo{height:220px;width:175px;border:2px solid #e8c979;border-radius:15px;overflow:hidden;display:grid;place-items:center;margin:8px auto 17px;background:linear-gradient(145deg,#2c3455,#141b32);box-shadow:0 0 30px #eac46b20}.photo img{width:100%;height:100%;object-fit:cover}.placeholder{font-size:64px;color:#8c96b9}.tag{display:inline-block;background:#174e42;color:#aef1c6;border:1px solid #4da582;padding:7px 15px;border-radius:30px;font-size:11px;letter-spacing:.1em;font-weight:800}.name{font-size:clamp(25px,7vw,38px);margin:18px 0 8px;line-height:1.1}.nickname{color:#edce78;font-style:italic;font-size:16px}.desc{line-height:1.6;color:#e2e5f4;margin:17px auto;max-width:390px}.number{color:#e7cb7d;font-weight:700;letter-spacing:.08em;font-size:13px}.notice{background:#ffffff0c;border:1px solid #ffffff20;padding:14px 16px;border-radius:12px;font-size:14px;line-height:1.5;margin:20px 0}.small{color:#b3bbd8;font-size:13px}.buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}button,.button{border:1px solid #e4c778;background:#edcc78;color:#1c2134;padding:12px 17px;border-radius:11px;font-size:14px;font-weight:800;cursor:pointer;text-decoration:none}button.secondary{background:transparent;color:#f1d98c}.footer{text-align:center;color:#8994b7;font-size:11px;margin-top:25px;line-height:1.7}.selector{background:#111a34;border:1px solid #ffffff30;color:white;border-radius:10px;padding:12px;font-size:15px;width:100%;margin-top:14px}.missionIcon{font-size:52px;margin:10px}.hide{display:none}.spark{animation:glow 2s ease-in-out infinite alternate}@keyframes glow{to{text-shadow:0 0 30px #ffda80}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
 /* Affichage télévision */
@@ -216,23 +207,7 @@ function displayArrival(p){
 
   name.textContent=p.name.toUpperCase()+'\nEST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
 
-  name.style.cssText=
-    'display:block !important;'+
-    'width:100% !important;'+
-    'max-width:100% !important;'+
-    'line-height:1.15 !important;'+
-    'white-space:pre-line !important;'+
-    'text-align:center !important;'+
-    'position:relative !important;'+
-    'margin:0 auto !important;'+
-    'box-sizing:border-box !important;';
-
   nick.textContent='✦ '+p.nick+' ✦';
-  nick.style.cssText=
-    'display:block !important;'+
-    'text-align:center !important;'+
-    'margin:20px auto !important;';
-
   document.getElementById('tvMessage').textContent='Bienvenue à La Nuit des Étoiles !';
 
   setTimeout(function(){
@@ -288,4 +263,3 @@ async function pollTV(){
 }
 function startTV(){pollTV();setInterval(pollTV,2500)}
 </script></body></html>
-```
