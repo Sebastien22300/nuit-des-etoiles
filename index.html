@@ -288,9 +288,9 @@ function displayArrival(p){
   document.getElementById('tvIcon').textContent='🌟';
   document.getElementById('tvStatus').textContent='NOUVELLE ÉTOILE AU FESTIVAL';
 
-  name.textContent=p.name.toUpperCase()+'\nEST ARRIVÉ'+(p.name.endsWith('e')?'E':'')+' !';
+  name.textContent=p.name.toUpperCase();
+nick.textContent='EST ARRIVÉ !';
 
-  nick.textContent='✦ '+p.nick+' ✦';
   document.getElementById('tvMessage').textContent='Bienvenue à La Nuit des Étoiles !';
 
   setTimeout(function(){
