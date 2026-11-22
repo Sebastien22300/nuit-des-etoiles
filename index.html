@@ -468,5 +468,13 @@ function testerCompteARebours() {
   }
   afficher();
 }
+
+if (new URLSearchParams(location.search).has('tv')) {
+  const boutonTest = document.createElement('button');
+  boutonTest.textContent = '🎆 Tester le compte à rebours';
+  boutonTest.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:9999;padding:15px;background:#d4af37;color:black;border:0;border-radius:10px;font-size:16px;cursor:pointer;';
+  boutonTest.onclick = testerCompteARebours;
+  document.body.appendChild(boutonTest);
+}
 </script>
 </body></html>
