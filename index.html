@@ -452,7 +452,7 @@ background:#08091c url('decor%20decompte.png') center center / cover no-repeat; 
   titre.textContent = 'LA NUIT DES ÉTOILES';
   const compteur = document.createElement('div');
   
-compteur.style.cssText = 'font-family:Arial,sans-serif;font-size:300px;font-weight:900;color:#FFD700;text-shadow:0 0 12px #FFFFFF,0 0 35px #FFB900,0 0 70px #FF8C00,5px 8px 3px #704000;text-align:center;line-height:1.1;';
+compteur.style.cssText = 'font-family:Arial,sans-serif;font-size:450px;font-weight:900;color:#FFD700;text-shadow:0 0 12px #FFFFFF,0 0 35px #FFB900,0 0 70px #FF8C00,5px 8px 3px #704000;text-align:center;line-height:1.1;';
 
   ecran.append(titre, compteur);
   document.body.appendChild(ecran);
@@ -463,7 +463,7 @@ compteur.style.cssText = 'font-family:Arial,sans-serif;font-size:300px;font-weig
     if (secondes <= 0) {
       clearInterval(intervalle);
       compteur.textContent = 'BONNE ANNÉE 2027 !';
-      compteur.style.fontSize = 'clamp(30px,6vw,90px)';
+      compteur.style.fontSize = 70px';
     }
   }, 1000);
 
