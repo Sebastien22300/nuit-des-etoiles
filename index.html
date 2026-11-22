@@ -442,12 +442,13 @@ function startTV(){pollTV();setInterval(pollTV,2500)}
 function ajouterEtoiles(ecran) {
   for (let i = 0; i < 35; i++) {
     const etoile = document.createElement('span');
-    etoile.textContent = '✦';
+    etoile.textContent = '✧';
     etoile.style.cssText = `
       position:absolute;
       left:${Math.random() * 100}%;
       top:${Math.random() * 100}%;
-      color:#FFD700;
+color:${['#FFD700','#FFF4B0','#00BFFF','#00FFFF','#75DFFF'][Math.floor(Math.random()*5)]};
+text-shadow:0 0 8px currentColor,0 0 18px currentColor,0 0 30px currentColor;
       font-size:${8 + Math.random() * 20}px;
       pointer-events:none;
       animation:scintiller ${1 + Math.random() * 2}s infinite alternate;
