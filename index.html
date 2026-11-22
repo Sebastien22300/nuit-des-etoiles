@@ -176,7 +176,7 @@ body.tv #tv:not(.tv-arrival) .tv-chip{font-size:clamp(10px,1vw,18px)!important;p
 body.tv #tv:not(.tv-arrival) #tvConnection{font-size:clamp(10px,.85vw,16px)!important;margin:.2vh auto!important;}
 */
 /* NOUVEL ÉCRAN VIP DORÉ — couche indépendante de la TV et des bracelets NFC */
-#vipScreen{position:fixed;inset:0;z-index:10000;display:none;overflow:hidden;background:#02091c url('vip-festival.jpg') center center/100% no-repeat;color:#fff;font-family:Arial,Helvetica,sans-serif;align-items:center;justify-content:center}
+#vipScreen{position:fixed;inset:0;isolation:isolate;z-index:10000;display:none;overflow:hidden;background:#02091c url('vip-festival.jpg') center center/100% no-repeat;color:#fff;font-family:Arial,Helvetica,sans-serif;align-items:center;justify-content:center}
 #vipScreen.show{display:flex;animation:vipFade .6s ease-out both}
 #vipScreen:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,6,22,.18),rgba(1,6,22,.35) 50%,rgba(1,6,22,.18));pointer-events:none}
 #vipScreen .vip-layout{position:relative;width:96vw;height:88vh;display:flex;align-items:center;justify-content:space-between;gap:2vw}
