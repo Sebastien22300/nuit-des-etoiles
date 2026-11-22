@@ -440,7 +440,7 @@ async function pollTV(){
 }
 function startTV(){pollTV();setInterval(pollTV,2500)}
 function ajouterEtoiles(ecran) {
-  for (let i = 0; i < 35; i++) {
+  for (let i = 0; i < 100; i++) {
     const etoile = document.createElement('span');
     etoile.textContent = '✧';
     etoile.style.cssText = `
@@ -451,7 +451,7 @@ color:${['#FFD700','#FFF4B0','#00BFFF','#00FFFF','#75DFFF'][Math.floor(Math.rand
 text-shadow:0 0 8px currentColor,0 0 18px currentColor,0 0 30px currentColor;
       font-size:${8 + Math.random() * 20}px;
       pointer-events:none;
-      animation:scintiller ${1 + Math.random() * 2}s infinite alternate;
+animation:scintiller ${0.3 + Math.random() * 0.7}s infinite alternate;
     `;
     ecran.appendChild(etoile);
   }
