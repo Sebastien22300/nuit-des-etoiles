@@ -433,7 +433,22 @@ async function pollTV(){
  }catch(e){document.getElementById('tvConnection').textContent='⚠ Connexion en attente : '+e.message;}
 }
 function startTV(){pollTV();setInterval(pollTV,2500)}
-
+function ajouterEtoiles(ecran) {
+  for (let i = 0; i < 35; i++) {
+    const etoile = document.createElement('span');
+    etoile.textContent = '✦';
+    etoile.style.cssText = `
+      position:absolute;
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      color:#FFD700;
+      font-size:${8 + Math.random() * 20}px;
+      pointer-events:none;
+      animation:scintiller ${1 + Math.random() * 2}s infinite alternate;
+    `;
+    ecran.appendChild(etoile);
+  }
+}
 function testerCompteARebours() {
   var secondes = 30;
 
@@ -456,7 +471,7 @@ compteur.style.cssText = 'font-family:Arial,sans-serif;font-size:600px;font-weig
 
   ecran.append(titre, compteur);
   document.body.appendChild(ecran);
-
+ajouterEtoiles(ecran);
   const intervalle = setInterval(() => {
     secondes--;
     afficher();
