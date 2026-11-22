@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#0756bd"><title>La Nuit des Étoiles · Édition privée</title>
 <style>
+  body.tv #vipFirstName {
+  display: inline-block !important;
+  background: #e7c65c !important;
+  color: #302408 !important;
+  padding: 12px 24px !important;
+  border-radius: 4px !important;
+  text-shadow: none !important;
+  max-width: 90% !important;
+}
+
+body.tv #vipFirstName::before {
+  content: "★ ";
+}
+
+body.tv #vipFirstName::after {
+  content: " ★";
+}
   body.tv .brand .kicker {
   font-size: 28px !important;
 }
