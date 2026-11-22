@@ -451,7 +451,9 @@ background:#08091c url('decor%20decompte.png') center center / cover no-repeat; 
   const titre = document.createElement('h2');
   titre.textContent = 'LA NUIT DES ÉTOILES';
   const compteur = document.createElement('div');
-  compteur.style.cssText = 'font-size:clamp(100px,20vw,240px);font-weight:bold;';
+  
+compteur.style.cssText = 'font-family:Arial,sans-serif;font-size:clamp(140px,25vw,350px);font-weight:900;color:#FFD700;text-shadow:0 0 12px #FFFFFF,0 0 35px #FFB900,0 0 70px #FF8C00,5px 8px 3px #704000;text-align:center;line-height:1.1;';
+
   ecran.append(titre, compteur);
   document.body.appendChild(ecran);
 
