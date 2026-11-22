@@ -53,6 +53,25 @@ body.tv #tv.tv-arrival {
   text-align: center !important;
   animation: none !important;
 }
+  body.tv #tv.tv-arrival #tvName {
+  background: #e7c65c !important;
+  color: #302408 !important;
+  padding: 12px 24px !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  font-size: clamp(24px, 4vw, 52px) !important;
+  text-shadow: none !important;
+}
+
+body.tv #tv.tv-arrival #tvName::before {
+  content: "★ ";
+}
+
+body.tv #tv.tv-arrival #tvName::after {
+  content: " ★";
+}
 body.tv #tv.tv-arrival #tvName {
   display: block !important;
   width: 100% !important;
