@@ -433,4 +433,40 @@ async function pollTV(){
  }catch(e){document.getElementById('tvConnection').textContent='⚠ Connexion en attente : '+e.message;}
 }
 function startTV(){pollTV();setInterval(pollTV,2500)}
-</script></body></html>
+
+function testerCompteARebours() {
+  let secondes = 30;
+
+  const ecran = document.createElement('div');
+  ecran.style.cssText = `
+    position:fixed; inset:0; z-index:99999;
+    background:#08091c; color:#f5d77b;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    font-family:Arial,sans-serif;
+  `;
+
+  const titre = document.createElement('h2');
+  titre.textContent = 'LA NUIT DES ÉTOILES';
+  const compteur = document.createElement('div');
+  compteur.style.cssText = 'font-size:clamp(100px,20vw,240px);font-weight:bold;';
+  ecran.append(titre, compteur);
+  document.body.appendChild(ecran);
+
+  const intervalle = setInterval(() => {
+    secondes--;
+    afficher();
+    if (secondes <= 0) {
+      clearInterval(intervalle);
+      compteur.textContent = 'BONNE ANNÉE 2027 !';
+      compteur.style.fontSize = 'clamp(30px,6vw,90px)';
+    }
+  }, 1000);
+
+  function afficher() {
+    compteur.textContent = secondes;
+  }
+  afficher();
+}
+</script>
+</body></html>
