@@ -456,12 +456,13 @@ animation:scintiller ${0.3 + Math.random() * 0.7}s infinite alternate;
     ecran.appendChild(etoile);
   }
 }
-function testerCompteARebours() {
+  async function testerCompteARebours() {
   var secondes = 30;
 const musique = new Audio('Nuit_des_Etoiles_DJ_MAX.mp3');
 musique.preload = 'auto';
 musique.load();
 musique.play();
+  await new Promise(resolve => setTimeout(resolve, 4000));
   const ecran = document.createElement('div');
   ecran.style.cssText = `
 position:fixed; top:0; left:0; width:100%; height:100%; z-index:99999;
