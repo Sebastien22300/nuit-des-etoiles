@@ -458,7 +458,9 @@ animation:scintiller ${0.3 + Math.random() * 0.7}s infinite alternate;
 }
 function testerCompteARebours() {
   var secondes = 30;
-
+  const musique = new Audio('music_decompte.mp3');
+musique.play();
+  const voixDJ = new Audio('voix_dj.mp3');
   const ecran = document.createElement('div');
   ecran.style.cssText = `
 position:fixed; top:0; left:0; width:100%; height:100%; z-index:99999;
@@ -481,6 +483,9 @@ compteur.style.cssText = 'font-family:Arial,sans-serif;font-size:600px;font-weig
 ajouterEtoiles(ecran);
   const intervalle = setInterval(() => {
     secondes--;
+    if (secondes === 13) {
+    voixDJ.play();
+}
     afficher();
     if (secondes <= 0) {
       clearInterval(intervalle);
