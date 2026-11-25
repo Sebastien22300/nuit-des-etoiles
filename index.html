@@ -271,7 +271,7 @@ body.vip-active #vipScreen {
 const people=[
 {id:'01',name:'Christelle',nick:'La star du Dance Floor',photo:'Christelle.png'},
 {id:'02',name:'Venaig',nick:'La reine de la night',photo:'Ve.png'},
-{id:'03',name:'Yohan',nick:'Yoyo le BG',photo:'Yoyo.png'},
+{id:'03',name:'Yohan',nick:'Yoyo le BG',photo:'Yoyo.png',music:'Yoyo.mp3'},
 {id:'04',name:'Frédéric',nick:'Alias Cristiano',photo:'Fred.png'},
 {id:'05',name:'Vanessa',nick:' La diva du karaoké',photo:'Vanessa1.png'},
 {id:'06',name:'Sebastien',nick:"L organisateur dejanté",photo:'Seb.png'},
@@ -388,6 +388,12 @@ function displayArrival(p){
   vip.classList.add('show');
   document.body.classList.add('vip-active');
   vip.setAttribute('aria-hidden','false');
+  if(p.music){
+  const musiqueVIP = new Audio(p.music);
+  musiqueVIP.volume = 1;
+  musiqueVIP.play().catch(e => console.warn(e));
+  setTimeout(() => musiqueVIP.pause(), 10000);
+}
   tvUntil=Date.now()+10000;
   clearTimeout(vipHideTimer);
   vipHideTimer=setTimeout(function(){vip.classList.remove('show');document.body.classList.remove('vip-active');vip.setAttribute('aria-hidden','true');},10000);
