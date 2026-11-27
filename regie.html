@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Régie secrète - La Nuit des Étoiles</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 18px;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #f5d477;
+  background: radial-gradient(ellipse at top, #302413, #08080c 65%);
+}
+
+.container {
+  max-width: 550px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  padding: 15px 0 20px;
+}
+
+.festival {
+  font-size: 15px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 14px 0 8px;
+  color: #ffda75;
+  text-shadow: 0 0 20px #b58b30;
+}
+
+.subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #b8a47a;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 11px;
+  margin: 20px 0;
+  color: #aaa;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #d7a747;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d6ad50, transparent);
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.action {
+  min-height: 105px;
+  padding: 12px 6px;
+  border: 1px solid #a9863e;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #302617, #12110f);
+  color: #f5d477;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: inset 0 0 15px #ffffff08,
+              0 0 10px #d4af3718;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.action:active {
+  transform: scale(0.95);
+  background: #55401c;
+  box-shadow: 0 0 20px #d4af3766;
+}
+
+.emoji {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.countdown {
+  border-color: #e8c35e;
+  background: linear-gradient(145deg, #493713, #18140d);
+}
+
+.stop {
+  width: 100%;
+  margin-top: 16px;
+  padding: 19px 10px;
+  border: 1px solid #e34b4b;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #4a1515, #210909);
+  color: #ff9292;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 16px;
+  min-height: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #d5bd85;
+}
+
+footer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8d7950;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <div class="festival">✦ LA NUIT DES ÉTOILES ✦</div>
+  <h1>RÉGIE SECRÈTE</h1>
+  <div class="subtitle">ESPACE ORGANISATEUR</div>
+
+  <div class="status">
+    <span><span class="dot"></span>TV : à connecter</span>
+    <span><span class="dot"></span>Firebase : à connecter</span>
+  </div>
+</header>
+
+<div class="separator"></div>
+
+<div class="grid">
+
+  <button class="action" onclick="commande('Défilé des VIP')">
+    <span class="emoji">🎬</span>
+    DÉFILÉ DES VIP
+  </button>
+
+  <button class="action" onclick="commande('Gangnam Style')">
+    <span class="emoji">🕺</span>
+    GANGNAM STYLE
+  </button>
+
+  <button class="action" onclick="commande('Tous sur la piste')">
+    <span class="emoji">📢</span>
+    TOUS SUR LA PISTE
+  </button>
+
+  <button class="action" onclick="commande('Roue du Destin')">
+    <span class="emoji">🎡</span>
+    ROUE DU DESTIN
+  </button>
+
+  <button class="action" onclick="commande('Danse et Statue')">
+    <span class="emoji">💃</span>
+    DANSE &amp; STATUE
+  </button>
+
+  <button class="action" onclick="commande('Défis personnalisés')">
+    <span class="emoji">⚡</span>
+    DÉFIS PERSONNALISÉS
+  </button>
+
+  <button class="action" onclick="commande('Défi libre')">
+    <span class="emoji">⌨️</span>
+    DÉFI LIBRE
+  </button>
+
+  <button class="action" onclick="commande('Karaoké surprise')">
+    <span class="emoji">🎤</span>
+    KARAOKÉ SURPRISE
+  </button>
+
+  <button class="action" onclick="commande('Photo collective')">
+    <span class="emoji">📸</span>
+    PHOTO COLLECTIVE
+  </button>
+
+  <button class="action" onclick="commande('Awards du festival')">
+    <span class="emoji">🏆</span>
+    AWARDS DU FESTIVAL
+  </button>
+
+  <button class="action" onclick="commande('Musiques')">
+    <span class="emoji">🎧</span>
+    MUSIQUES
+  </button>
+
+  <button class="action countdown" onclick="commande('Compte à rebours 2027')">
+    <span class="emoji">⏳</span>
+    COMPTE À REBOURS 2027
+  </button>
+
+</div>
+
+<button class="stop" onclick="commande('STOP / Retour accueil TV')">
+  ■ STOP / RETOUR ACCUEIL TV
+</button>
+
+<div class="message" id="message">
+  Régie en cours de configuration
+</div>
+
+<footer>
+  PLOUBEZRE • 31.12.2026
+</footer>
+
+</div>
+
+<script>
+function commande(nom) {
+  document.getElementById('message').textContent =
+    nom + ' — Fonction à connecter';
+}
+</script>
+
+</body>
+</html>
