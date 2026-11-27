@@ -375,7 +375,7 @@ async function displayArrival(p){
     musiqueVIP.play().catch(e => console.warn(e));
     setTimeout(() => musiqueVIP.pause(), 10000);
   }
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 1500));
   const vip=document.getElementById('vipScreen');
   const portrait=document.getElementById('vipPortrait');
   const placeholder=document.getElementById('vipPlaceholder');
@@ -421,7 +421,7 @@ async function defileVIP() {
   try {
     for (const p of people) {
   await displayArrival(p);
-      await new Promise(resolve => setTimeout(resolve, 8500));
+      await new Promise(resolve => setTimeout(resolve, 8000));
     }
   } finally {
     defileEnCours = false;
