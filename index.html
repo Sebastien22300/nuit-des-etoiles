@@ -343,7 +343,7 @@ let authPromise=null;
 function anonymousAuth(){
  if(!authPromise){
   authPromise=fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+encodeURIComponent(firebaseApiKey),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({returnSecureToken:true})})
-   .then(r=>{if(!r.ok)throw Error('Connexion Firebase indisponible');return r.json()})
+  .then(async r=>{if(!r.ok)throw Error(await r.text());return r.json()})
    .then(d=>d.idToken).catch(e=>{authPromise=null;throw e});
  }
  return authPromise;
