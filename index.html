@@ -368,7 +368,14 @@ else picker.classList.remove('hide');
 
 let tvKnown={},tvLastEvent=0,tvFirstLoad=true,tvUntil=0;
 let vipHideTimer=null;
-function displayArrival(p){
+async function displayArrival(p){
+  if(p.music){
+    const musiqueVIP = new Audio(p.music);
+    musiqueVIP.volume = 1;
+    musiqueVIP.play().catch(e => console.warn(e));
+    setTimeout(() => musiqueVIP.pause(), 10000);
+  }
+  await new Promise(resolve => setTimeout(resolve, 1000));
   const vip=document.getElementById('vipScreen');
   const portrait=document.getElementById('vipPortrait');
   const placeholder=document.getElementById('vipPlaceholder');
@@ -390,12 +397,7 @@ function displayArrival(p){
   vip.classList.add('show');
   document.body.classList.add('vip-active');
   vip.setAttribute('aria-hidden','false');
-  if(p.music){
-  const musiqueVIP = new Audio(p.music);
-  musiqueVIP.volume = 1;
-  musiqueVIP.play().catch(e => console.warn(e));
-  setTimeout(() => musiqueVIP.pause(), 10000);
-}
+  
   tvUntil=Date.now()+10000;
   clearTimeout(vipHideTimer);
   vipHideTimer=setTimeout(function(){vip.classList.remove('show');document.body.classList.remove('vip-active');vip.setAttribute('aria-hidden','true');},10000);
@@ -418,8 +420,8 @@ async function defileVIP() {
 
   try {
     for (const p of people) {
-      displayArrival(p);
-      await new Promise(resolve => setTimeout(resolve, 9000));
+  await displayArrival(p);
+      await new Promise(resolve => setTimeout(resolve, 8500));
     }
   } finally {
     defileEnCours = false;
