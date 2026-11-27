@@ -237,9 +237,126 @@ footer {
 </div>
 
 <script>
-function commande(nom) {
-  document.getElementById('message').textContent =
-    nom + ' — Fonction à connecter';
+const firebaseApiKey = 'COLLER_LA_CLE_API_ICI';
+const firebaseDatabase = 'https://nuit-des-etoiles-c864b-default-rtdb.europe-west1.firebasedatabase.app';
+const organisateur = 'QU0dnj13EpNLqx15xFEeYksWMJS2';
+
+let token = null;
+let expiration = 0;
+
+const message = document.getElementById('message');
+const boutons = document.querySelectorAll('.action, .stop');
+
+const connexion = document.createElement('div');
+
+connexion.style.cssText =
+  'padding:20px;border:1px solid #a9863e;border-radius:14px;margin-bottom:20px;text-align:center;background:#17130d;';
+
+connexion.innerHTML = `
+  <h3>🔐 ACCÈS ORGANISATEUR</h3>
+
+  <input id="email" type="email"
+    placeholder="Adresse e-mail"
+    autocomplete="username"
+    style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;">
+
+  <input id="password" type="password"
+    placeholder="Mot de passe"
+    autocomplete="current-password"
+    style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;">
+
+  <button onclick="connecter()"
+    style="width:100%;padding:14px;background:#d6ad50;color:#111;border:0;border-radius:8px;font-weight:bold;">
+    SE CONNECTER
+  </button>
+
+  <p id="etatConnexion"></p>
+`;
+
+document.querySelector('.grid').before(connexion);
+
+boutons.forEach(b => b.disabled = true);
+
+async function connecter() {
+  const etat = document.getElementById('etatConnexion');
+
+  try {
+    etat.textContent = 'Connexion en cours...';
+
+    const response = await fetch(
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + encodeURIComponent(firebaseApiKey),
+      {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          returnSecureToken: true
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || data.localId !== organisateur) {
+      throw new Error('Accès refusé');
+    }
+
+    token = data.idToken;
+    expiration = Date.now() + Number(data.expiresIn) * 1000;
+
+    document.getElementById('password').value = '';
+
+    connexion.style.display = 'none';
+
+    boutons.forEach(b => b.disabled = false);
+
+    document.querySelector('.status').innerHTML =
+      '<span>🟡 TV : à connecter</span><span style="color:#65c78b">● Firebase connecté</span>';
+
+    message.textContent = 'Bienvenue dans la régie secrète !';
+
+  } catch(e) {
+    etat.textContent = 'Connexion impossible. Vérifie tes identifiants.';
+  }
+}
+
+async function commande(nom) {
+
+  if (!token || Date.now() >= expiration) {
+    token = null;
+    connexion.style.display = 'block';
+    boutons.forEach(b => b.disabled = true);
+    message.textContent = 'Reconnecte-toi pour continuer.';
+    return;
+  }
+
+  if (nom === 'Compte à rebours 2027') {
+    if (!confirm('Lancer le compte à rebours ?')) return;
+  }
+
+  try {
+    const response = await fetch(
+      firebaseDatabase + '/commandes.json?auth=' + encodeURIComponent(token),
+      {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          action: nom,
+          timestamp: {'.sv':'timestamp'}
+        })
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Commande refusée');
+    }
+
+    message.textContent = '✓ Commande envoyée : ' + nom;
+
+  } catch(e) {
+    message.textContent = 'Erreur : commande non envoyée';
+  }
 }
 </script>
 
