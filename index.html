@@ -408,6 +408,21 @@ function displayArrival(p){
     }, 2000);
   });
 }
+  let defileEnCours = false;
+
+async function defileVIP() {
+  if (defileEnCours) return;
+  defileEnCours = true;
+
+  try {
+    for (const p of people) {
+      displayArrival(p);
+      await new Promise(resolve => setTimeout(resolve, 10200));
+    }
+  } finally {
+    defileEnCours = false;
+  }
+}
 function updateTV(data){
  const arrivals=data&&typeof data==='object'?data:{};
  const ids=people.filter(p=>arrivals[p.id]&&typeof arrivals[p.id].timestamp==='number').map(p=>p.id);
@@ -472,7 +487,10 @@ async function pollCommandes() {
     if (!cmd || cmd.timestamp <= derniereCommande) return;
 
     derniereCommande = cmd.timestamp;
-
+if (cmd.action === 'Défilé des VIP') {
+    defileVIP();
+    return;
+}
     const message = document.createElement('div');
 
     message.style.cssText =
