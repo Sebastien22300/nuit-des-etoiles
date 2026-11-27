@@ -383,8 +383,10 @@ function displayArrival(p){
   if(photo) portrait.src=photo;
   // Ajuster les prénoms longs à la largeur disponible.
   name.style.fontSize=(p.name||'').length>12?'4.6vw':(p.name||'').length>9?'6vw':'';
+  if (!defileEnCours) {
   vip.classList.remove('show');
   void vip.offsetWidth;
+}
   vip.classList.add('show');
   document.body.classList.add('vip-active');
   vip.setAttribute('aria-hidden','false');
