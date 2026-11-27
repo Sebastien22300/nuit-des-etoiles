@@ -444,7 +444,60 @@ async function pollTV(){
   document.getElementById('tvConnection').textContent='● Écran connecté au festival';
  }catch(e){document.getElementById('tvConnection').textContent='⚠ Connexion en attente : '+e.message;}
 }
-function startTV(){pollTV();setInterval(pollTV,2500)}
+let derniereCommande = null;
+let lectureCommandeEnCours = false;
+
+async function pollCommandes() {
+  if (lectureCommandeEnCours) return;
+  lectureCommandeEnCours = true;
+
+  try {
+    const token = await anonymousAuth();
+
+    const response = await fetch(
+      firebaseDatabase + '/commandes.json?auth=' +
+      encodeURIComponent(token),
+      {cache: 'no-store'}
+    );
+
+    if (!response.ok) return;
+
+    const cmd = await response.json();
+
+    if (derniereCommande === null) {
+      derniereCommande = cmd ? cmd.timestamp : 0;
+      return;
+    }
+
+    if (!cmd || cmd.timestamp <= derniereCommande) return;
+
+    derniereCommande = cmd.timestamp;
+
+    const message = document.createElement('div');
+
+    message.style.cssText =
+      'position:fixed;top:40%;left:10%;width:80%;padding:40px;background:#111;color:#FFD700;border:3px solid #FFD700;border-radius:20px;text-align:center;font-size:60px;font-weight:bold;z-index:99999;';
+
+    message.textContent = 'COMMANDE REÇUE : ' + cmd.action;
+
+    document.body.appendChild(message);
+
+    setTimeout(() => message.remove(), 5000);
+
+  } catch(e) {
+    console.warn('Regie :', e);
+  } finally {
+    lectureCommandeEnCours = false;
+  }
+}
+
+function startTV() {
+  pollTV();
+  setInterval(pollTV, 2500);
+
+  pollCommandes();
+  setInterval(pollCommandes, 1500);
+}
 function ajouterEtoiles(ecran) {
   for (let i = 0; i < 100; i++) {
     const etoile = document.createElement('span');
